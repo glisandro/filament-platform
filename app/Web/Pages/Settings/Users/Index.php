@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Pages\Dashboard;
+namespace App\Web\Pages\Settings\Users;
 
 use App\Actions\Script\CreateScript;
 use App\Models\Script;
@@ -13,14 +13,15 @@ use Filament\Support\Enums\MaxWidth;
 
 class Index extends Page
 {
+    protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?string $slug = 'dashboard';
+    protected static ?string $slug = 'users';
 
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $title = 'Dashboard';
+    protected static ?string $title = 'Users';
 
     public static function getNavigationItemActiveRoutePattern(): string
     {
@@ -30,7 +31,7 @@ class Index extends Page
     public function getWidgets(): array
     {
         return [
-            //Se podria colocar un infolist con el total de usuarios por ej,
+            [Widgets\UserList::class],
         ];
     }
 }

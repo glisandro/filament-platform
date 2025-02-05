@@ -40,11 +40,6 @@ class WebServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::SIDEBAR_FOOTER,
-            fn () => view('components.app-version')
-        );
         
         FilamentAsset::register([
             Js::make('app', Vite::asset('resources/js/app.js'))->module(),

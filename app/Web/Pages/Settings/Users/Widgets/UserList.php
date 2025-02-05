@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Web\Pages\Dashboard\Widgets;
+namespace App\Web\Pages\Settings\Users\Widgets;
 
 use App\Models\User;
 use App\Models\Server;
@@ -12,7 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Widgets\TableWidget as Widget;
 
-class Dashboard extends Widget
+class UserList extends Widget
 {
     protected function getTableQuery(): Builder
     {
@@ -25,6 +25,9 @@ class Dashboard extends Widget
             TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
+            TextColumn::make('email')
+                ->searchable()
+                ->sortable(),
         ];
     }
 
@@ -34,7 +37,7 @@ class Dashboard extends Widget
             ->heading(null)
             ->query($this->getTableQuery())
             ->columns($this->getTableColumns())
-            //->recordUrl(fn (Server $record) => View::getUrl(parameters: ['server' => $record]))
+            //->recordUrl(fn (User $record) => View::getUrl(parameters: ['server' => $record]))
             ->actions([
                 Action::make('settings')
                     ->label('Settings')
